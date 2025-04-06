@@ -128,16 +128,41 @@
     <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;"> <!-- Set header background color inline -->
+                <div class="modal-header" style="background-color: #020606; color:white;">
                     <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" style="background-color: #modal-body-color;"> <!-- Set modal body background color inline -->
+                <div class="modal-body" style="background-color: modal-body-color;">
+                    <!-- Display the predicted disease name -->
                     <p>{{ predicted_disease }}</p>
+
+                    <!-- Display the image based on the predicted disease -->
+                    <div class="disease-image">
+                        <img src="" alt="Disease Image" id="diseaseImage" class="img-fluid" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Assuming you're rendering this with a templating engine like Flask or Django
+        const disease = "{{ predicted_disease }}";
+
+        // Get the image element
+        const imageElement = document.getElementById("diseaseImage");
+
+        // Set image source based on the predicted disease
+        if (disease === "AIDS") {
+            imageElement.src = "static/AIDS.jpg"; // Replace with the actual image URL
+        } else if (disease === "Acne") {
+            imageElement.src = "static/Acne.jpg.jpg"; // Replace with the actual image URL
+        }else if (disease === "Disease 3") {
+            imageElement.src = "path/to/disease3_image.jpg"; // Replace with the actual image URL
+        } else {
+            imageElement.src = "path/to/default_image.jpg"; // Default image if disease name doesn't match
+        }
+    </script>
 
 
     <!-- Description Modal -->
